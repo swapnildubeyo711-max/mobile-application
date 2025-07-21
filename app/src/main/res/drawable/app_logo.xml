@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    
+    <!-- Hotel Building -->
+    <path
+        android:fillColor="#6750A4"
+        android:pathData="M4,20V8h3V6c0-1.1,0.9-2,2-2h6c1.1,0,2,0.9,2,2v2h3v12H4z"/>
+    
+    <!-- Windows -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M6,10h1v1H6V10z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M8,10h1v1H8V10z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M10,10h1v1H10V10z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M12,10h1v1H12V10z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M14,10h1v1H14V10z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M16,10h1v1H16V10z"/>
+    
+    <!-- More Windows -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M6,12h1v1H6V12z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M8,12h1v1H8V12z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M10,12h1v1H10V12z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M12,12h1v1H12V12z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M14,12h1v1H14V12z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M16,12h1v1H16V12z"/>
+    
+    <!-- Door -->
+    <path
+        android:fillColor="#FFB300"
+        android:pathData="M11,16h2v4h-2V16z"/>
+    
+    <!-- 3D Effect -->
+    <path
+        android:fillColor="#4F378B"
+        android:pathData="M17,8v12h3V8H17z"/>
+</vector>
