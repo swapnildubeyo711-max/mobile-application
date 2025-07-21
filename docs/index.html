@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Finder 3D - Revolutionary Hotel Booking App</title>
+    <meta name="description" content="Experience hotels like never before! Search by single letter, explore in 3D, compare prices across platforms. The future of hotel booking.">
+    <meta name="keywords" content="hotel booking, 3D hotels, price comparison, Android app, travel app">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Hotel Finder 3D - Revolutionary Hotel Booking App">
+    <meta property="og:description" content="Experience hotels like never before! Search by single letter, explore in 3D, compare prices across platforms.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://swapnildubeyo711-max.github.io/mobile-application/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%236750A4' d='M4,20V8h3V6c0-1.1,0.9-2,2-2h6c1.1,0,2,0.9,2,2v2h3v12H4z'/><path fill='%23FFFFFF' d='M6,10h1v1H6V10z M8,10h1v1H8V10z M10,10h1v1H10V10z M12,10h1v1H12V10z M14,10h1v1H14V10z M16,10h1v1H16V10z M6,12h1v1H6V12z M8,12h1v1H8V12z M10,12h1v1H10V12z M12,12h1v1H12V12z M14,12h1v1H14V12z M16,12h1v1H16V12z'/><path fill='%23FFB300' d='M11,16h2v4h-2V16z'/></svg>">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1C1B1F;
+            background: linear-gradient(135deg, #6750A4 0%, #4F378B 50%, #21005D 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .logo::before {
+            content: "🏨";
+            margin-right: 0.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #FFB300;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 8rem 0 4rem;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #FFB300, #03DAC6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero .description {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.8;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #FFB300, #FF8F00);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Features Section */
+        .features {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #6750A4;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9ff, #fff);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(103, 80, 164, 0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #6750A4;
+        }
+        
+        /* App Screenshots */
+        .screenshots {
+            background: #f8f9ff;
+            padding: 4rem 0;
+        }
+        
+        .mockup-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .mockup {
+            background: #1C1B1F;
+            color: #00ff00;
+            padding: 1rem;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            line-height: 1.2;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        
+        /* Demo Section */
+        .demo {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .demo-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .demo-step {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #6750A4, #4F378B);
+            color: white;
+        }
+        
+        .demo-step h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Download Section */
+        .download {
+            background: linear-gradient(135deg, #6750A4, #21005D);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .download-options {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .download-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background: #1C1B1F;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #FFB300;
+            text-decoration: none;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .mockup {
+                font-size: 0.7rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* Scroll animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Hotel Finder 3D</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#screenshots">Screenshots</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#download">Download</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="fade-in-up">Hotel Finder 3D</h1>
+            <p class="tagline fade-in-up">"Experience hotels like never before!"</p>
+            <p class="description fade-in-up">
+                The world's first hotel booking app with interactive 3D visualization, 
+                single-letter city search, and real-time price comparison across multiple platforms.
+            </p>
+            <div class="cta-buttons fade-in-up">
+                <a href="#download" class="btn btn-primary">
+                    📱 Get the App
+                </a>
+                <a href="https://github.com/swapnildubeyo711-max/mobile-application/tree/cursor/develop-android-3d-hotel-booking-app-8167" class="btn btn-secondary" target="_blank">
+                    💻 View Source Code
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">Revolutionary Features</h2>
+            <div class="features-grid">
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Single-Letter Search</h3>
+                    <p>Type "L" to instantly find hotels in London, Los Angeles, and Lisbon. Revolutionary search experience that's lightning fast!</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">🎮</div>
+                    <h3>3D Hotel Visualization</h3>
+                    <p>Explore hotels in stunning 3D with OpenGL ES rendering. Rotate, zoom, and experience hotels before booking!</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">💰</div>
+                    <h3>Price Comparison</h3>
+                    <p>Compare prices from Booking.com, Expedia, Hotels.com and more. Always get the best deal available!</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">🏨</div>
+                    <h3>Famous Hotels</h3>
+                    <p>Discover world-renowned hotels: The Ritz London, Hotel Ritz Paris, The Plaza, Burj Al Arab, and many more!</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Modern Design</h3>
+                    <p>Beautiful Material Design 3 interface with purple and gold theme. Smooth animations and intuitive user experience.</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Smart Filters</h3>
+                    <p>Advanced filtering by price range, star rating, amenities, and location. Find exactly what you're looking for!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section id="screenshots" class="screenshots">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">App Screenshots</h2>
+            <div class="mockup-container">
+                <div class="mockup scroll-reveal">
+┌─────────────────────────────────────┐
+│ 🏨 Hotel Finder 3D          ⚙️ 🔍 │
+├─────────────────────────────────────┤
+│                                     │
+│ ┌─────────────────────────────────┐ │
+│ │ 🔍 Search cities (L for London)│ │
+│ └─────────────────────────────────┘ │
+│                                     │
+│ [🔽 Filters] [💰 Price ↑] [⭐ Rating] │
+│                                     │
+│ ┌─────────────────────────────────┐ │
+│ │ 📸 [Hotel Image]                │ │
+│ │ 🏨 The Ritz London         ⭐4.8│ │
+│ │ 📍 London, UK                   │ │
+│ │ 💰 $650/night    [🎮 3D View]   │ │
+│ │ 💳 Compare: $680 $665 $675      │ │
+│ └─────────────────────────────────┘ │
+└─────────────────────────────────────┘
+                </div>
+                <div class="mockup scroll-reveal">
+┌─────────────────────────────────────┐
+│ ← 3D View: The Ritz London    🏠 📷│
+├─────────────────────────────────────┤
+│          🏗️ 3D HOTEL MODEL         │
+│     ╭─────────────────────────╮     │
+│    ╱│ ▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢ │╲    │
+│   ╱ │ ▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢ │ ╲   │
+│  ╱  │ ▢ ▢ ▢ 🏨 RITZ ▢ ▢ ▢ │  ╲  │
+│ ╱   │ ▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢ │   ╲ │
+│     │ ▢ ▢ ▢ ▢ 🚪 ▢ ▢ ▢ ▢ ▢ │     │
+│     └─────────────────────────┘     │
+│ 🎮 Touch Controls:                  │
+│ • Drag to rotate 🔄                 │
+│ • Pinch to zoom 🔍                  │
+└─────────────────────────────────────┘
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="demo">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">How It Works</h2>
+            <div class="demo-steps">
+                <div class="demo-step scroll-reveal">
+                    <h4>1. Smart Search</h4>
+                    <p>Type "L" and instantly see London, Los Angeles, Lisbon hotels</p>
+                </div>
+                <div class="demo-step scroll-reveal">
+                    <h4>2. Explore in 3D</h4>
+                    <p>View interactive 3D hotel models with realistic details</p>
+                </div>
+                <div class="demo-step scroll-reveal">
+                    <h4>3. Compare Prices</h4>
+                    <p>See prices from multiple platforms and find the best deal</p>
+                </div>
+                <div class="demo-step scroll-reveal">
+                    <h4>4. Book Instantly</h4>
+                    <p>One-click booking with confirmation and trip details</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download">
+        <div class="container">
+            <h2 class="section-title">Get Hotel Finder 3D</h2>
+            <p>Experience the future of hotel booking today!</p>
+            <div class="download-options">
+                <div class="download-card scroll-reveal">
+                    <h3>📱 Android APK</h3>
+                    <p>Build from source code</p>
+                    <a href="https://github.com/swapnildubeyo711-max/mobile-application/blob/cursor/develop-android-3d-hotel-booking-app-8167/BUILD_INSTRUCTIONS.md" class="btn btn-primary" target="_blank">
+                        Build Instructions
+                    </a>
+                </div>
+                <div class="download-card scroll-reveal">
+                    <h3>💻 Source Code</h3>
+                    <p>Full Android Studio project</p>
+                    <a href="https://github.com/swapnildubeyo711-max/mobile-application/tree/cursor/develop-android-3d-hotel-booking-app-8167" class="btn btn-secondary" target="_blank">
+                        GitHub Repository
+                    </a>
+                </div>
+                <div class="download-card scroll-reveal">
+                    <h3>🎨 Design Showcase</h3>
+                    <p>Visual demo and mockups</p>
+                    <a href="https://github.com/swapnildubeyo711-max/mobile-application/blob/cursor/develop-android-3d-hotel-booking-app-8167/VISUAL_DEMO.md" class="btn btn-primary" target="_blank">
+                        View Designs
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://github.com/swapnildubeyo711-max/mobile-application" target="_blank">GitHub</a>
+                <a href="https://github.com/swapnildubeyo711-max/mobile-application/blob/cursor/develop-android-3d-hotel-booking-app-8167/README.md" target="_blank">Documentation</a>
+                <a href="https://github.com/swapnildubeyo711-max/mobile-application/issues" target="_blank">Support</a>
+            </div>
+            <p>&copy; 2024 Hotel Finder 3D. Experience hotels like never before!</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all scroll-reveal elements
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+title: Hotel Finder 3D
+description: Revolutionary hotel booking app with 3D visualization and single-letter search
+url: "https://swapnildubeyo711-max.github.io"
+baseurl: "/mobile-application"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# SEO settings
+author: Hotel Finder 3D Team
+twitter:
+  username: hotelapp3d
+  card: summary_large_image
+
+# Social media
+social:
+  name: Hotel Finder 3D
+  links:
+    - https://github.com/swapnildubeyo711-max/mobile-application
+
+# Google Analytics (optional)
+# google_analytics: UA-XXXXXXXX-X
+
+# Exclude files from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - app/
+  - gradle/
+  - build.gradle
+  - settings.gradle
+  - gradlew
+  - gradlew.bat
+
+# Include files
+include:
+  - _pages
+  - assets
+
+# Collections
+collections:
+  pages:
+    output: true
+    permalink: /:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
