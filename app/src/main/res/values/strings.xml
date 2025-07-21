@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hotel Finder 3D</string>
+    <string name="search_hint">Search cities (e.g., "L" for London, Paris...)</string>
+    <string name="filter_by_price">Filter by Price</string>
+    <string name="compare_prices">Compare Prices</string>
+    <string name="view_3d">View in 3D</string>
+    <string name="book_now">Book Now</string>
+    <string name="price_per_night">per night</string>
+    <string name="rating">Rating</string>
+    <string name="amenities">Amenities</string>
+    <string name="description">Description</string>
+    <string name="location">Location</string>
+    <string name="reviews">Reviews</string>
+    <string name="gallery">Gallery</string>
+    <string name="no_hotels_found">No hotels found</string>
+    <string name="loading">Loading...</string>
+    <string name="error_loading">Error loading hotels</string>
+    <string name="retry">Retry</string>
+    <string name="min_price">Min Price</string>
+    <string name="max_price">Max Price</string>
+    <string name="apply_filters">Apply Filters</string>
+    <string name="clear_filters">Clear Filters</string>
+    <string name="sort_by">Sort By</string>
+    <string name="sort_price_low">Price: Low to High</string>
+    <string name="sort_price_high">Price: High to Low</string>
+    <string name="sort_rating">Rating</string>
+    <string name="sort_distance">Distance</string>
+</resources>
