@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Hotels - Premium Accommodations Across America</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <meta name="description" content="Book luxury hotels across America with state-specific pricing and premium amenities. Discover iconic destinations and monuments.">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">
+                <div class="logo-icon"></div>
+                <span class="logo-text">Luxe Hotels</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#states">Destinations</a></li>
+                    <li><a href="#hotels">Hotels</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Discover Luxury Across America</h1>
+            <p>Experience premium accommodations with state-specific pricing and iconic monument views</p>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <form id="searchForm" class="search-form">
+                <div class="form-group">
+                    <label for="stateSelect">Destination State</label>
+                    <select id="stateSelect">
+                        <option value="">All States</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="searchCheckIn">Check-in Date</label>
+                    <input type="date" id="searchCheckIn" min="">
+                </div>
+                <div class="form-group">
+                    <label for="searchCheckOut">Check-out Date</label>
+                    <input type="date" id="searchCheckOut" min="">
+                </div>
+                <div class="form-group">
+                    <label for="searchGuests">Guests</label>
+                    <select id="searchGuests">
+                        <option value="1">1 Guest</option>
+                        <option value="2">2 Guests</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4 Guests</option>
+                        <option value="5">5+ Guests</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn">Search Hotels</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- States Section -->
+    <section id="states" class="container">
+        <h2 class="text-center">Explore Iconic Destinations</h2>
+        <p class="text-center">Each state offers unique pricing and experiences near famous monuments and landmarks</p>
+        <div id="statesGrid" class="states-grid">
+            <!-- States will be loaded dynamically -->
+        </div>
+    </section>
+
+    <!-- Hotels Section -->
+    <section id="hotels" class="container">
+        <div id="hotelsSection">
+            <h2 class="text-center">Featured Hotels</h2>
+            <div id="hotelsGrid" class="hotels-grid">
+                <!-- Hotels will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container mt-2">
+        <div class="text-center">
+            <h2>About Luxe Hotels</h2>
+            <p>We offer premium accommodations across America's most iconic destinations. Our state-based pricing system ensures you get the best value while experiencing luxury near famous monuments and landmarks.</p>
+            
+            <div class="states-grid mt-2">
+                <div class="state-card">
+                    <div class="state-image">
+                        <span>🏆</span>
+                    </div>
+                    <div class="state-info">
+                        <h3>Premium Quality</h3>
+                        <p>All our hotels meet the highest standards of luxury and comfort</p>
+                    </div>
+                </div>
+                <div class="state-card">
+                    <div class="state-image">
+                        <span>💰</span>
+                    </div>
+                    <div class="state-info">
+                        <h3>State-Based Pricing</h3>
+                        <p>Fair pricing that reflects local market conditions and demand</p>
+                    </div>
+                </div>
+                <div class="state-card">
+                    <div class="state-image">
+                        <span>🗺️</span>
+                    </div>
+                    <div class="state-info">
+                        <h3>Iconic Locations</h3>
+                        <p>Stay near famous monuments and landmarks across America</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hotel Details Modal -->
+    <div id="hotelModal" class="modal">
+        <div class="modal-content">
+            <!-- Modal content will be loaded dynamically -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="logo mb-2">
+                <div class="logo-icon"></div>
+                <span class="logo-text">Luxe Hotels</span>
+            </div>
+            <div class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#support">Customer Support</a>
+                <a href="#careers">Careers</a>
+                <a href="#press">Press</a>
+            </div>
+            <p>&copy; 2024 Luxe Hotels. All rights reserved. | Premium accommodations across America</p>
+            <p>Experience luxury near iconic monuments with our state-based pricing system</p>
+        </div>
+    </footer>
+
+    <script src="/static/js/app.js"></script>
+    <script>
+        // Set minimum dates for search form
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const tomorrowStr = tomorrow.toISOString().split('T')[0];
+            
+            document.getElementById('searchCheckIn').min = today;
+            document.getElementById('searchCheckOut').min = tomorrowStr;
+            
+            // Auto-update checkout min date when checkin changes
+            document.getElementById('searchCheckIn').addEventListener('change', function() {
+                const checkInDate = new Date(this.value);
+                checkInDate.setDate(checkInDate.getDate() + 1);
+                document.getElementById('searchCheckOut').min = checkInDate.toISOString().split('T')[0];
+            });
+        });
+    </script>
+</body>
+</html>
